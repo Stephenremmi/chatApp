@@ -1,0 +1,27 @@
+body {
+    background-color: antiquewhite;
+}
+#personal-details {
+    margin: 50px;
+    display: grid;
+    justify-content: center;
+    
+   
+}
+#reg-details {
+    margin: 10px;
+    padding: 5px;
+}
+#btn {
+    font-size: 15px;
+    width: fit-content;
+    margin-left: 120px;
+
+}
+.register-link {
+    color: red;
+}
+footer {
+    display: grid;
+    justify-content: center;
+}
