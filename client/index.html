@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat App</title>
+    <script type="module" src="script.js"></script>
+    <script src="https://kit.fontawesome.com/1ac6e31574.js" crossorigin="anonymous"></script>
+    <style>
+        body{
+            background-color: #075e54;
+            display: flex;
+            flex-direction: column;
+            height: 70vh;
+            width: 90%;
+            max-width: 1200px;
+
+        }
+        #message-container {
+            border: 1px solid black;
+            flex-grow: 1;
+            overflow-y: auto;
+        }
+        #message-container div {
+          padding: 5px;
+        }
+        #form {
+            margin: 10px;
+        }
+        #send-button {
+            font-size: 15px;
+        width: fit-content;
+        padding-right: 20px;
+        padding-left: 20px;
+        padding-top: 3px;
+        padding-bottom: 3px;
+        border-radius: 5px;
+        border: transparent;
+        background-color: #efefef;
+        color: #075e54;
+        }
+    </style>
+</head>
+<body>
+    <div id="message-container">
+        <div id="specific-message"></div>
+    </div>
+        <form id="form">
+            <label for="message-input">Message</label>
+            <input type="text" id="message-input">
+            <button type="submit"><i id="send-button" class="fa-solid fa-paper-plane"></i></button>
+        </form>
+    
+</body>
+</html>
