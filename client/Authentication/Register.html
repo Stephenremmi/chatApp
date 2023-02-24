@@ -11,24 +11,24 @@
     <div id="personal-details">
         <fieldset>
             <legend>CREATE CHATAPP ACCOUNT</legend>
-        <form id="form">
+        <form id="form" action="http://localhost:5000/register" method="post">
             <label for="f-name"> First Name</label>
-            <input type="text" id="reg-details"> <br/>
+            <input type="text" id="reg-details" name="fname"> <br/>
             <label for="l-name"> Last Name</label>
-            <input type="text" id="reg2-details"><br/>
+            <input type="text" id="reg2-details" name="lname"><br/>
             <label for="dob"> Date Of Birth</label>
-            <input type="date" id="birth-details"><br/>
+            <input type="date" id="birth-details" name="dob"><br/>
             <label for="email"> Email</label>
-            <input type="email" id="email-details"><br/>
+            <input type="email" id="email-details" name="email"><br/>
             <label for="phone-no"> Phone Number</label>
-            <input type="tel" id="tel-details"><br/>
+            <input type="tel" id="tel-details" name="telnumber"><br/>
             <label for="password"> Password</label>
-            <input type="password" id="pass-details">
+            <input type="password" id="pass-details" name="password">
             <input type="checkbox" onclick="myFunction()">Show<br/>
             <label for="password"> Confirm password</label>
-            <input type="password" id="pass2-details"><br/>
+            <input type="password" id="pass2-details" name="confirm-password"><br/>
 
-            <input type="button" value="Create account" id="btn-register">
+            <input type="submit" value="Create account" id="btn-register">
             <p>By creating an account, I agree to the <a href="#" class="register-link">Terms</a><br/>and <a href="#" class="register-link"> Privacy policy</a></p>
             <p>Have an account, <a href="Login.html" class="register-link">sign in</a> instead?</p>
         </form>
@@ -46,6 +46,11 @@
                 x.type = "password"
             }
  }
+        document.querySelector('form').onsubmit = e => {
+        e.target.submit()
+        e.target.reset()
+        return false
+}
     </script>
 </body>
 </html>

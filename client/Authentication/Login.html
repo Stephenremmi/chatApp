@@ -11,12 +11,12 @@
     <div id="personal-details">
         <fieldset>
             <legend>SIGN IN</legend>
-        <form id="form">
+        <form id="form" action="http://localhost:5000/customer/login" method="post">
             <label for="phone-no"> Phone Number</label> <br/>
-            <input type="tel" id="reg-details"> <br/>
+            <input type="tel" id="reg-details" name="telnumber"> <br/>
             <label for="password"> Password</label> <br/>
-            <input type="password" id="reg-details"><br/> <br/>
-            <input type="button" value="Login" id="btn-login"> <br/><br/>
+            <input type="password" id="pass-details" name="password"><br/> <br/>
+            <input type="submit" value="Login" id="btn-login"> <br/><br/>
             <span>Dont have an account!  <a href="Register.html" class="register-link"> Sign up</a></span>
         </form>
     </fieldset>
@@ -24,5 +24,12 @@
     <footer>
         <p> Ⓒ 2023, ChatApp Template</p>
     </footer>
+    <script>
+        document.querySelector('form').onsubmit = e => {
+        e.target.submit()
+        e.target.reset()
+        return false
+}
+    </script>
 </body>
 </html>
