@@ -6,12 +6,12 @@ const form = document.getElementById("form")
 
 const socket = io('http://localhost:3000');
 socket.on('connect', ()=> {
-    displayMessage(`You are a user connected with id: ${socket.id}`)
+    displayMessage(`Welcome to ChatApp`)
 })
 
 socket.on('receive-message', message => {
     const div = document.createElement("div");
-    div.textContent = message;
+    div.textContent =`${message.message}`;
     div.style.border = "1px solid #cccccc";
     div.style.width="auto";
     div.style.flexDirection = "row"; 
@@ -20,6 +20,20 @@ socket.on('receive-message', message => {
     div.style.backgroundColor = "#fbfbfb";
     div.style.marginTop = "5px";
     document.getElementById("specific-message").append(div)
+})
+socket.on('login', data => {
+    const { telnumber, username } = data;
+    console.log(`Received info: ${username}:${telnumber}`)
+    const container = document.getElementById("present-users");
+        const div = document.createElement("div");
+        div.textContent = `${username}:${telnumber}`;
+        container.appendChild(div)
+        const br = document.createElement("br");
+        container.appendChild(div)
+        div.style.fontSize = "20px"; 
+        div.style.color = "#000000"; 
+        div.style.backgroundColor = "bisque";
+        div.style.marginTop = "5px";
 })
 
 form.addEventListener("submit", e => {

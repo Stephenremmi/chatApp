@@ -9,13 +9,17 @@
     <script src="https://kit.fontawesome.com/1ac6e31574.js" crossorigin="anonymous"></script>
     <style>
         body{
-            background-color: #075e54;
+            background-color: bisque;
             display: flex;
             flex-direction: column;
             height: 70vh;
             width: 90%;
             max-width: 1200px;
 
+        }
+        h1 {
+            color: black;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
         }
         #message-container {
             border: 1px solid black;
@@ -24,6 +28,14 @@
         }
         #message-container div {
           padding: 5px;
+        }
+        #users-active {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 20px;
+            flex-grow: 1;
+            overflow-y: auto;
+
         }
         #form {
             margin: 10px;
@@ -43,12 +55,19 @@
     </style>
 </head>
 <body>
+      <div id="users-active">
+        <div id="message-container">
+            <div id="present-users">
+                <h1>ACTIVE USERS</h1>
+            </div>
+        </div>
     <div id="message-container">
         <div id="specific-message"></div>
     </div>
+     </div>
         <form id="form">
             <label for="message-input">Message</label>
-            <input type="text" id="message-input">
+            <input type="text" id="message-input" placeholder="Type Message">
             <button type="submit"><i id="send-button" class="fa-solid fa-paper-plane"></i></button>
         </form>
     
