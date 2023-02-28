@@ -4,6 +4,7 @@ const auth_users = express.Router();
 const jwt = require('jsonwebtoken');
 
 let users=[];
+let loggedin_users = [];
 const isValid = (telnumber)=> {
     let userswithsamenumber = users.filter((user)=> {
         return user.telnumber === telnumber
@@ -30,8 +31,9 @@ auth_users.post('/login', (req,res) => {
     console.log(req.body.telnumber)
     console.log(req.body.password)
     const telnumber = req.body.telnumber;
-    console.log(telnumber)
     const password = req.body.password;
+    loggedin_users.push({"telnumber": telnumber})
+    console.log(loggedin_users)
     if(!telnumber || !password) {
         return res.status(404).json({message: "Error logging in!"})
     }
@@ -52,3 +54,4 @@ auth_users.post('/login', (req,res) => {
 module.exports.authenticated = auth_users;
 module.exports.isValid = isValid;
 module.exports.users = users;
+module.exports.loggedin_users = loggedin_users;
