@@ -28,8 +28,6 @@ socket.on('login', data => {
         const div = document.createElement("div");
         div.textContent = `${username}:${telnumber}`;
         container.appendChild(div)
-        const br = document.createElement("br");
-        container.appendChild(div)
         div.style.fontSize = "20px"; 
         div.style.color = "#000000"; 
         div.style.backgroundColor = "bisque";
@@ -42,11 +40,26 @@ form.addEventListener("submit", e => {
     
     
      if (message === "") return
-        displayMessage(message)
-        socket.emit("send-message", message)
+     const filteredMessage = filterOffensiveWords(message);
+        displayMessage(filteredMessage)
+        socket.emit("send-message", filteredMessage)
 
     messageInput.value = ""
 })
+const offensiveWords = ['fuck', 'bitch', 'motherfucker','pussy','stupid','ass','sex','loser'];
+
+function filterOffensiveWords(message) {
+    const words = message.split(" ");
+    const filteredWords = words.map(word => {
+        if (offensiveWords.includes(word.toLowerCase())) {
+            return "*".repeat(word.length);
+        } else {
+            return word;
+        }
+    });
+
+    return filteredWords.join(" ");
+}
  function displayMessage(message) {
     const div = document.createElement("div");
     div.textContent = message;

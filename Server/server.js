@@ -6,7 +6,6 @@ const bodyParser = require('body-parser')
 const cors = require('cors');
 const auth_users_routes = require('./router/auth_users.js').authenticated;
 let users = require('./router/auth_users.js').users;
-let loggedin_users = require('./router/auth_users.js').loggedin_users;
 let isValid = require('./router/auth_users.js').isValid;
 
 app.use( bodyParser.json() )
@@ -45,11 +44,19 @@ app.post('/register', (req,res)=> {
     res.status(500).send();
 }
 })
+const wordsToFilter = new Set(['fuck', 'bitch', 'motherfucker','pussy','stupid','ass','sex','loser']);
 io.on('connection', socket => {
     console.log(socket.id)
     socket.on("send-message", message => {
+        let filteredMessage = message;
+
+        // Iterate through each word to filter and replace it with asterisks
+        for (const word of wordsToFilter) {
+          const pattern = new RegExp(word, 'gi');  // Create a regular expression pattern for the word
+          filteredMessage = filteredMessage.replace(pattern, '*'.repeat(word.length));  // Replace the word with asterisks
+        }
         socket.broadcast.emit('receive-message', {
-            message: message,
+            message: filteredMessage
 
         })
     })
